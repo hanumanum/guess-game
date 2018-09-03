@@ -1,0 +1,31 @@
+#app{
+    width:500px;
+    margin: 0 auto;
+    height: 500px;
+    border: 1px solid #27ae60;
+    text-align: center;
+}
+
+p{
+    margin:3px 0px;
+}
+
+h1{
+    margin:10px 0px;   
+    color: #d35400;
+}
+
+.langswicher, .langswicherActive{
+    margin:5px;
+    padding:5px;
+    display: inline-block;
+    color: white;
+    background-color: #229954;
+    cursor: pointer;
+    width:22px;
+}
+
+.langswicherActive{
+    background-color: #2980b9;
+    border-bottom: red 3px solid; 
+}
