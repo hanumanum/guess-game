@@ -2,11 +2,11 @@
     "title":"Guess Number Game",
     "explanation":"This programm select one number from following numbers",
     "task":"Try to find Secret Number in minimal steps",
-    "less":"Your number less than secret number >>>",
-    "more":"<<< Your number is grather than Secret Number",
+    "less":"Hint: Your number is less than Secret number",
+    "more":"Hint: Your number is greater than Secret Number",
     "optimize":"You can find secret number in 7 steps",
     "repeat":"Would you like to retry",
     "random": "Seems you try to find by random clicking, think and find better way !!!",
-    "success": "The Secret Number is",
+    "success": "Congratulations !!! The Secret Number is",
     "newgame": "New game"
 }

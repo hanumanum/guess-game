@@ -1,18 +1,20 @@
 #app{
-    width:500px;
+    width:520px;
     margin: 0 auto;
     border: 1px solid #27ae60;
     text-align: center;
-    padding: 20px 0px;
+    padding: 3px 0px;
 }
 
 p{
-    margin:3px 0px;
+    margin:8px 0px;
+    font-size: 20px;
 }
 
 h1{
     margin:10px 0px;   
     color: #d35400;
+    
 }
 
 .langswicher, .langswicherActive{
@@ -27,7 +29,8 @@ h1{
 
 .langswicherActive, .langswicher:hover{
     background-color: #2980b9;
-    border-bottom: red 3px solid; 
+    border-bottom: #d35400 3px solid; 
+    box-shadow: 2px 2px 2px gray; 
     
 }
 
@@ -35,7 +38,7 @@ h1{
     cursor: default;
 }
 
-.number, .numberSelected, .numberCorrect {
+.number, .numberSelected, .numberCorrect, .numberLast, .numberAvoided{
     margin:5px;
     padding:5px;
     display: inline-block;
@@ -46,6 +49,7 @@ h1{
 .number{
     cursor:pointer;
     background-color:#bfc9ca;
+    box-shadow: 2px 2px 2px gray;
 }
 
 .number:hover{
@@ -53,8 +57,84 @@ h1{
     color:white;
 }
 
-.numberSelected, .numberCorrect {
+.numberSelected{
     cursor:default;
     background-color: #2980b9;
     color:white;
 }
+
+.numberLast{
+    cursor:default;
+    background-color: #f5b041;
+    color:white;
+}
+
+.numberCorrect {
+    cursor:default;
+    background-color:#229954;
+    color:white;
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+}
+
+.numberAvoided{
+    cursor:default;
+    background-color:black;
+    color:white;
+}
+
+.button{
+    display: inline-block;
+    color:white;
+    background-color: #229954;
+    text-decoration: none;
+    border-radius: 5px;
+    padding:10px 20px;
+    margin: 5px 0px;
+    font-weight: bold;
+}
+
+.button:hover{
+    box-shadow: 2px 2px 2px gray;
+}
+
+.hint{
+    background-color: #2980b9 ;
+    padding: 3px;
+    font-size: 22px;
+    font-weight: bold;
+    color:white;
+}
+
+.hintWin{
+    background-color:  #229954; 
+    padding: 3px;
+    font-size: 22px;
+    font-weight: bold;
+    color:white;
+}
+
+
+@-webkit-keyframes zoomIn {
+    from {
+      opacity: 0;
+      -webkit-transform: scale3d(0.3, 0.3, 0.3);
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      -webkit-transform: scale3d(0.3, 0.3, 0.3);
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  }

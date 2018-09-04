@@ -12,7 +12,8 @@ class App extends React.Component {
       numbers:[],
       secret:0,
       steps:0,
-      response:""
+      response:"",
+      gameover:false
     };
 
     this.setupGame()
@@ -38,22 +39,40 @@ class App extends React.Component {
 
   callbackClick(newNumber, selecteds){
     if(newNumber == this.state.secret){
-      this.setState({response:this.state.messages.success+this.state.secret})
+      this.setState({response:this.state.messages.success+" "+this.state.secret})
+      this.setState({gameover:true})
     }else if(newNumber>this.state.secret){
       this.setState({response:this.state.messages.more})
     }else if(newNumber<this.state.secret){
       this.setState({response:this.state.messages.less})
     }
+
+    this.setState((prevState, props) => ({
+      steps: prevState.steps+1
+    }));
+   
   }
 
   render() {
+    console.log("secret",this.state.secret)
+    console.log("steps" ,this.state.steps)
     return <div>
             <LangList langs={this.state.langs} selected={this.state.lang} callbackFromApp={this.callbackChoosedLanguage} />
             <h1>{this.state.messages.title}</h1>
             <Paragraph text={this.state.messages.explanation} />
             <Paragraph text={this.state.messages.task} />
-            <GameBoard numbers={this.state.numbers} callbackFromApp={this.callbackClick}/>
-            <p>{this.state.response}</p>
+            <p> {this.state.steps} from 7 </p>
+
+            
+            <p className={(!this.state.gameover) ? "hint":""}>{(!this.state.gameover) ? this.state.response:""}</p>
+            <p className={(this.state.gameover) ? "hintWin":""}>{(this.state.gameover) ? this.state.response:""}</p>
+            <GameBoard numbers={this.state.numbers} 
+                       callbackFromApp={this.callbackClick} 
+                       secret={this.state.secret}
+                       gameOver={this.state.gameover}
+                       steps={this.state.steps}
+            />
+            <a className="button" href=''>{this.state.messages.newgame}</a>
           </div>;
   }
 
@@ -76,7 +95,8 @@ class GameBoard extends React.Component {
     super(props);
     this.state = {
         numbers:props.numbers,
-        selected:[]        
+        selected:[],
+        last:0,
       };
       this.selectNumber = this.selectNumber.bind(this)
     }
@@ -84,18 +104,41 @@ class GameBoard extends React.Component {
     selectNumber(e){
       let newNumbers = this.state.selected.concat(parseInt(e.target.id));
       this.setState({
-        selected: newNumbers
+        selected: newNumbers,
+        last:e.target.id
       }, this.props.callbackFromApp(e.target.id, newNumbers));
-     
+    }
+
+    chooseClass(num){
+      
+      /*
+      //Start help from 5th step
+      if(this.props.steps>=4){
+        if(!this.state.selected.has(num) && num<this.state.last && this.state.last<this.props.secret){
+          return "numberAvoided"
+        }
+        
+        if(!this.state.selected.has(num) && num>this.state.last && this.state.last>this.props.secret){
+          return "numberAvoided"
+        }
+      }
+      */
+      
+
+      if(this.state.last == num){
+        return "numberLast"
+      }
+      if(this.props.gameOver && num === this.props.secret)
+        return "numberCorrect"
+      return (this.state.selected.has(num)) ? "numberSelected" : "number"
     }
 
     render() {
       return this.state.numbers.map((num)=>{
         return <div 
               id={num} key={num} 
-              className="number"
-              className={(this.state.selected.has(num)) ? "numberSelected" : "number"}
-              onClick={this.selectNumber}>
+              className={this.chooseClass(num)}
+              onClick={(this.state.selected.has(num)) ? null: this.selectNumber}>
               {num}
             </div>
             
