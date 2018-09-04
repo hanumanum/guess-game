@@ -54,8 +54,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("secret",this.state.secret)
-    console.log("steps" ,this.state.steps)
     return <div>
             <LangList langs={this.state.langs} selected={this.state.lang} callbackFromApp={this.callbackChoosedLanguage} />
             <h1>{this.state.messages.title}</h1>
