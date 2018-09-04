@@ -17,10 +17,6 @@ Array.prototype.fillRange = function(start, end){
     return this;
 }
 
-function hanlog(data, comment){
-    console.log(data, comment, hanlog.caller)
-}
-
 
 //TESTS 
 /*

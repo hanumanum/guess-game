@@ -1,5 +1,5 @@
-/*'use strict'; */
-const rangeStart = 20;
+'use strict';
+const rangeStart = 1;
 const rangeEng = 100;
 
 class App extends React.Component {
@@ -29,12 +29,10 @@ class App extends React.Component {
     this.setState({lang:newLang},()=>{
       this.translateApp()
     })
-    
-    
+   
   }
 
   render() {
-    //const langlist = this.generateLanguagesLits();
     return <div>
             <LangList langs={this.state.langs} selected={this.state.lang} callbackFromApp={this.callbackChoosedLanguage} />
             <h1>{this.state.messages.title}</h1>
@@ -65,7 +63,7 @@ class LangList extends React.Component {
         langs:props.langs
       };
       
-      //TODO: clearify WTF ???
+    //TODO: clearify WTF ???
     this.changeLanguage = this.changeLanguage.bind(this);
     }
 
@@ -78,7 +76,8 @@ class LangList extends React.Component {
     render() {
       return this.state.langs.map((lng)=>{
         return <div 
-              id={lng} key={lng} data-selected = {this.state.selected}  className={(this.state.selected == lng) ? "langswicherActive" : "langswicher"} 
+              id={lng} key={lng} 
+              className={(this.state.selected == lng) ? "langswicherActive" : "langswicher"} 
               onClick={this.changeLanguage}>
               {lng}
             </div>
@@ -99,7 +98,6 @@ class Paragraph extends React.Component {
     return <p>{this.props.text}</p>;
   }
 }
-
 
 
 const e = React.createElement;
