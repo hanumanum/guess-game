@@ -1,9 +1,9 @@
 #app{
     width:500px;
     margin: 0 auto;
-    height: 500px;
     border: 1px solid #27ae60;
     text-align: center;
+    padding: 20px 0px;
 }
 
 p{
@@ -25,8 +25,36 @@ h1{
     width:22px;
 }
 
-.langswicherActive{
+.langswicherActive, .langswicher:hover{
     background-color: #2980b9;
     border-bottom: red 3px solid; 
+    
+}
+
+.langswicherActive{
     cursor: default;
+}
+
+.number, .numberSelected, .numberCorrect {
+    margin:5px;
+    padding:5px;
+    display: inline-block;
+    width:28px;
+    color:white;
+}
+
+.number{
+    cursor:pointer;
+    background-color:#bfc9ca;
+}
+
+.number:hover{
+    background-color: #2980b9;
+    color:white;
+}
+
+.numberSelected, .numberCorrect {
+    cursor:default;
+    background-color: #2980b9;
+    color:white;
 }

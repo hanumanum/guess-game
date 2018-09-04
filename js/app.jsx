@@ -8,12 +8,16 @@ class App extends React.Component {
     this.state = {
       messages: {},
       lang:"en",
-      langs:["en","hy","ru","fr"],
-      numbers:[]
+      langs:["en","hy","fr","ru"],
+      numbers:[],
+      secret:0,
+      steps:0,
+      response:""
     };
 
     this.setupGame()
     this.callbackChoosedLanguage = this.callbackChoosedLanguage.bind(this)
+    this.callbackClick = this.callbackClick.bind(this)
   }
   
   componentDidMount(){
@@ -22,7 +26,7 @@ class App extends React.Component {
 
   setupGame(){
     this.state.numbers.fillRange(rangeStart,rangeEng)
-    this.secret = this.state.numbers.rnd()
+    this.state.secret = this.state.numbers.rnd()
   }
 
   callbackChoosedLanguage(newLang){
@@ -32,12 +36,24 @@ class App extends React.Component {
    
   }
 
+  callbackClick(newNumber, selecteds){
+    if(newNumber == this.state.secret){
+      this.setState({response:this.state.messages.success+this.state.secret})
+    }else if(newNumber>this.state.secret){
+      this.setState({response:this.state.messages.more})
+    }else if(newNumber<this.state.secret){
+      this.setState({response:this.state.messages.less})
+    }
+  }
+
   render() {
     return <div>
             <LangList langs={this.state.langs} selected={this.state.lang} callbackFromApp={this.callbackChoosedLanguage} />
             <h1>{this.state.messages.title}</h1>
             <Paragraph text={this.state.messages.explanation} />
             <Paragraph text={this.state.messages.task} />
+            <GameBoard numbers={this.state.numbers} callbackFromApp={this.callbackClick}/>
+            <p>{this.state.response}</p>
           </div>;
   }
 
@@ -55,6 +71,40 @@ class App extends React.Component {
   }
 }
 
+class GameBoard extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+        numbers:props.numbers,
+        selected:[]        
+      };
+      this.selectNumber = this.selectNumber.bind(this)
+    }
+
+    selectNumber(e){
+      let newNumbers = this.state.selected.concat(parseInt(e.target.id));
+      this.setState({
+        selected: newNumbers
+      }, this.props.callbackFromApp(e.target.id, newNumbers));
+     
+    }
+
+    render() {
+      return this.state.numbers.map((num)=>{
+        return <div 
+              id={num} key={num} 
+              className="number"
+              className={(this.state.selected.has(num)) ? "numberSelected" : "number"}
+              onClick={this.selectNumber}>
+              {num}
+            </div>
+            
+      }) 
+    }
+
+}
+
+
 class LangList extends React.Component {
   constructor(props){
     super(props);
@@ -63,7 +113,7 @@ class LangList extends React.Component {
         langs:props.langs
       };
       
-    //TODO: clearify WTF ???
+    //TODO: clearify, WTF ???
     this.changeLanguage = this.changeLanguage.bind(this);
     }
 

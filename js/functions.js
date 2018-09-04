@@ -17,6 +17,10 @@ Array.prototype.fillRange = function(start, end){
     return this;
 }
 
+Array.prototype.has = function(v){
+    return (this.indexOf(v)>-1)? true: false;
+}
+
 
 //TESTS 
 /*
