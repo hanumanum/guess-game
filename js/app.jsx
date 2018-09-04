@@ -70,6 +70,7 @@ class LangList extends React.Component {
 
     changeLanguage(e){
       this.setState({selected:e.target.id}) 
+      e.target.removeEventListener("click",()=>{})
       this.props.callbackFromApp(e.target.id)
     }
 
