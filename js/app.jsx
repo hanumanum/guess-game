@@ -44,7 +44,7 @@ class App extends React.Component {
   }
 
   translateApp(){
-    fetch("/l18n/messeges_"+this.state.lang+".json")
+    fetch("l18n/messeges_"+this.state.lang+".json")
     .then(res => res.json())
     .then(
       (result) => {
