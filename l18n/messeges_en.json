@@ -7,6 +7,6 @@
     "optimize":"You can find secret number in 7 steps",
     "repeat":"Would you like to retry",
     "random": "Seems you try to find by random clicking, think and find better way !!!",
-    "success": "Congratulations !!! The Secret Number is",
+    "success": "Congratulations !!! \n The Secret Number is",
     "newgame": "New game"
 }
