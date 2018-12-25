@@ -1,12 +1,12 @@
 {
-    "title":"Guess Number Game",
-    "explanation":"This programm select one number from following numbers",
-    "task":"Try to find Secret Number in minimal steps",
-    "less":"Hint: Your number is less than Secret number",
-    "more":"Hint: Your number is greater than Secret Number",
-    "optimize":"You can find secret number in 7 steps",
-    "repeat":"Would you like to retry",
-    "random": "Seems you try to find by random clicking, think and find better way !!!",
-    "success": "Congratulations !!! \n The Secret Number is",
+    "title":"Guess the Number",
+    "explanation":"This program will select one of the following numbers",
+    "task":"Guess the hidden number in the least amount of steps",
+    "less":"Hint: Your guess is less than the hidden number",
+    "more":"Hint: Your guess is greater than the hidden Number",
+    "optimize":"You can guess the number in only 7 steps",
+    "repeat":"Try again?",
+    "random": "Random clicks won't work. Think and find a better way.",
+    "success": "Congratulations! \n The Number is",
     "newgame": "New game"
 }
