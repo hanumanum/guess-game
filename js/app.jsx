@@ -59,7 +59,7 @@ class App extends React.Component {
             <h1>{this.state.messages.title}</h1>
             <Paragraph text={this.state.messages.explanation} />
             <Paragraph text={this.state.messages.task} />
-            <p> {this.state.steps} from 7 </p>
+            <p> {this.state.steps} / 7 </p>
 
             
             <p className={(!this.state.gameover) ? "hint":""}>{(!this.state.gameover) ? this.state.response:""}</p>
